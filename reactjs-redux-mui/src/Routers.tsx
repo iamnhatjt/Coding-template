@@ -1,10 +1,8 @@
-import React from "react";
 import {
-  createBrowserRouter,
   RouteObject,
   RouterProvider,
+  createBrowserRouter,
 } from "react-router-dom";
-
 const listRouterPaths: RouteObject[] = [
   // with no wrapper
   {
@@ -20,7 +18,7 @@ const listRouterPaths: RouteObject[] = [
 
 const createRouter = createBrowserRouter(listRouterPaths);
 
-const Routers: React.FC = () => {
+const Routers = () => {
   return <RouterProvider router={createRouter} />;
 };
 

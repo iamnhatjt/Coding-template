@@ -3,7 +3,6 @@ import {
   ACCESS_TOKEN_STORAGE_KEY,
   API_TIMEOUT,
   API_URL,
-  AUTH_API_URL,
   REFRESH_TOKEN_STORAGE_KEY,
 } from "../constant";
 import { clientStorage } from "../utils/storage";
@@ -58,7 +57,6 @@ const createAxiosInstance = (baseUrl: string) => {
               Endpoint.REFRESH_TOKEN,
               {},
               {
-                baseURL: AUTH_API_URL,
                 headers: { "refresh-token": refreshToken },
               },
             );
