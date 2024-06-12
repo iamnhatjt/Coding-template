@@ -12,13 +12,11 @@ export interface AppState {
   token?: string;
   tokenRegister?: string;
   isExpandedSlideBar: boolean;
-  countTest: number;
 }
 
 const initialState: AppState = {
   appReady: false,
   isExpandedSlideBar: true,
-  countTest: 0,
 };
 
 const appSlice = createSlice({
@@ -43,9 +41,6 @@ const appSlice = createSlice({
       clientStorage.remove(REFRESH_TOKEN_STORAGE_KEY);
     },
     reset: () => ({ ...initialState, appReady: true }),
-    count: (state, action: PayloadAction<number | undefined>) => {
-      state.countTest += action?.payload ?? 1;
-    },
   },
   extraReducers: (builder) =>
     builder.addCase(
@@ -64,7 +59,7 @@ const appSlice = createSlice({
     ),
 });
 
-export const { toggleAppReady, updateAuth, clearAuth, reset, count } =
+export const { toggleAppReady, updateAuth, clearAuth, reset } =
   appSlice.actions;
 
 export default appSlice.reducer;

@@ -6,3 +6,8 @@ export interface BaseRouterType {
   element: React.FC;
   routes?: RouteObject[];
 }
+
+export enum LanguageEnum {
+  EN = "en",
+  VI = "vi",
+}

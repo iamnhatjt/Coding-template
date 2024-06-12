@@ -2,15 +2,16 @@ import { shallowEqual } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { useCallback, useMemo } from "react";
 import { SigninData, signin } from "./action";
-import { count } from "./reducers";
+import { LanguageEnum } from "../../constant/type";
+import { useTranslation } from "react-i18next";
+import { clientStorage } from "../../utils/storage";
+import { LANGUAGE_STORAGE_KEY } from "../../constant";
 
 export const useAuth = () => {
   const dispath = useAppDispatch();
 
-  const { token, countTest } = useAppSelector(
-    (state) => state.app,
-    shallowEqual,
-  );
+  const { i18n } = useTranslation();
+  const { token } = useAppSelector((state) => state.app, shallowEqual);
 
   const isLoggedIn = useMemo(() => !!token, [token]);
 
@@ -25,13 +26,16 @@ export const useAuth = () => {
     [dispath],
   );
 
-  const onAddTest = () => dispath(count(2));
+  const onChangeLanguageSystem = (language: LanguageEnum) => {
+    if (!language) return;
+    i18n.changeLanguage(language);
+    clientStorage.set(LANGUAGE_STORAGE_KEY, language);
+  };
 
   return {
     token,
     isLoggedIn,
     onSignin,
-    countTest,
-    onAddTest,
+    onChangeLanguageSystem,
   };
 };

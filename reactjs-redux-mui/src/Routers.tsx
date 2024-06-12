@@ -3,6 +3,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
+import Testing from "./features/TestTing";
 const listRouterPaths: RouteObject[] = [
   // with no wrapper
   {
@@ -12,7 +13,7 @@ const listRouterPaths: RouteObject[] = [
   //With wrapper
   {
     path: "/test",
-    element: <input />,
+    element: <Testing />,
   },
 ];
 
