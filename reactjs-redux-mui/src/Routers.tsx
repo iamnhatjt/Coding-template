@@ -11,8 +11,8 @@ const listRouterPaths: RouteObject[] = [
   },
   //With wrapper
   {
-    path: "/",
-    element: <div>this will be wrapper element</div>,
+    path: "/test",
+    element: <input />,
   },
 ];
 
