@@ -4,7 +4,7 @@ export type CommonDictionary = {
     description: string;
   };
   i18n: {
-    vn: string;
+    vi: string;
     en: string;
   };
 };

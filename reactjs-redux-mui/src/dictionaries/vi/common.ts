@@ -6,7 +6,7 @@ export const common: CommonDictionary = {
     description: "description for project",
   },
   i18n: {
-    vn: "Tiếng Việt",
+    vi: "Tiếng Việt",
     en: "Tiếng Anh",
   },
 };
