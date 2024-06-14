@@ -20,14 +20,15 @@ const Header = () => {
       width="100%"
     >
       <Link to={HOME_PATH}>"Home logo"</Link>
+
       <Stack
         direction="row"
         alignItems="center"
+        justifyContent="end"
         spacing={0.5}
         overflow="hidden"
         flex={1}
       >
-        Hello world
         <Stack direction="row" alignItems="center" spacing={2}>
           <SwitchLanguage />
           <SwitchTheme />

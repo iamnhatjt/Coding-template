@@ -23,6 +23,9 @@ const appSlice = createSlice({
   name: "app",
   initialState,
   reducers: {
+    onExpandedSlidebar: (state, action: PayloadAction<boolean | undefined>) => {
+      state.isExpandedSlideBar = action?.payload ?? !state.isExpandedSlideBar;
+    },
     toggleAppReady: (state, action: PayloadAction<boolean | undefined>) => {
       state.appReady = action?.payload ?? !state.appReady;
     },
@@ -59,7 +62,12 @@ const appSlice = createSlice({
     ),
 });
 
-export const { toggleAppReady, updateAuth, clearAuth, reset } =
-  appSlice.actions;
+export const {
+  onExpandedSlidebar,
+  toggleAppReady,
+  updateAuth,
+  clearAuth,
+  reset,
+} = appSlice.actions;
 
 export default appSlice.reducer;

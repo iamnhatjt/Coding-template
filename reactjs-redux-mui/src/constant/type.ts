@@ -11,3 +11,10 @@ export enum LanguageEnum {
   EN = "en",
   VI = "vi",
 }
+
+export type MenuItemProps = {
+  label: string;
+  href?: string;
+  icon?: React.ReactNode;
+  roles: string[];
+};

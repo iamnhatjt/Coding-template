@@ -6,6 +6,7 @@ import { LanguageEnum } from "../../constant/type";
 import { useTranslation } from "react-i18next";
 import { clientStorage } from "../../utils/storage";
 import { LANGUAGE_STORAGE_KEY } from "../../constant";
+import { onExpandedSlidebar } from "./reducers";
 
 export const useAuth = () => {
   const dispath = useAppDispatch();
@@ -37,5 +38,25 @@ export const useAuth = () => {
     isLoggedIn,
     onSignin,
     onChangeLanguageSystem,
+  };
+};
+
+export const useSidebar = () => {
+  const dispath = useAppDispatch();
+
+  const isExpandedSidebar = useAppSelector(
+    (state) => state.app.isExpandedSlideBar,
+  );
+
+  const onToogleExandSidebar = useCallback(
+    (newStatus?: boolean) => {
+      dispath(onExpandedSlidebar(newStatus));
+    },
+    [dispath],
+  );
+
+  return {
+    isExpandedSidebar,
+    onToogleExandSidebar,
   };
 };
