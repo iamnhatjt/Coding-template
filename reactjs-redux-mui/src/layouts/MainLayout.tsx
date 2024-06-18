@@ -1,13 +1,10 @@
 import { Stack, Snackbar } from "@mui/material";
 import SideBar from "./sharedComponents/SideBar";
-import { ReactNode, memo } from "react";
+import { memo } from "react";
 import Header from "./Header";
+import { Outlet } from "react-router-dom";
 
-type MainLayoutProps = {
-  children: ReactNode;
-};
-
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = () => {
   return (
     <Stack
       direction="row"
@@ -20,7 +17,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       <Stack flex={1} width="100%" height="100%" overflow="hidden">
         <Header />
         <Stack flex={1} spacing={{ xs: 1.5, sm: 3 }} sx={{ overflow: "auto" }}>
-          {children}
+          <Outlet />
         </Stack>
       </Stack>
       <Snackbar />

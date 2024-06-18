@@ -5,13 +5,18 @@ import {
   ACCESS_TOKEN_STORAGE_KEY,
   REFRESH_TOKEN_STORAGE_KEY,
 } from "../../constant";
-import { signin } from "./action";
+import { getProfile, signin } from "./action";
+
+export interface UserInfo {
+  //add type here
+}
 
 export interface AppState {
   appReady: boolean;
   token?: string;
   tokenRegister?: string;
   isExpandedSlideBar: boolean;
+  userData?: UserInfo;
 }
 
 const initialState: AppState = {
@@ -46,20 +51,27 @@ const appSlice = createSlice({
     reset: () => ({ ...initialState, appReady: true }),
   },
   extraReducers: (builder) =>
-    builder.addCase(
-      signin.fulfilled,
-      (
-        state,
-        action: PayloadAction<{ accessToken: string; refreshToken: string }>,
-      ) => {
-        const { accessToken, refreshToken } = action.payload;
+    builder
+      .addCase(
+        signin.fulfilled,
+        (
+          state,
+          action: PayloadAction<{ accessToken: string; refreshToken: string }>,
+        ) => {
+          const { accessToken, refreshToken } = action.payload;
 
-        clientStorage.set(ACCESS_TOKEN_STORAGE_KEY, accessToken);
-        clientStorage.set(REFRESH_TOKEN_STORAGE_KEY, refreshToken);
+          clientStorage.set(ACCESS_TOKEN_STORAGE_KEY, accessToken);
+          clientStorage.set(REFRESH_TOKEN_STORAGE_KEY, refreshToken);
 
-        state.token = accessToken;
-      },
-    ),
+          state.token = accessToken;
+        },
+      )
+      .addCase(
+        getProfile.fulfilled,
+        (state, action: PayloadAction<UserInfo>) => {
+          state.userData = Object.assign(state?.userData ?? {}, action.payload);
+        },
+      ),
 });
 
 export const {

@@ -38,7 +38,7 @@ const createAxiosInstance = (baseUrl: string) => {
   );
 
   axiosInstance.interceptors.response.use(
-    (response) => response,
+    (response) => response?.data?.data || response?.data || response,
     async (error) => {
       if (
         error.response &&

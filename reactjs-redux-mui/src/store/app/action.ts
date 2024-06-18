@@ -23,3 +23,16 @@ export const signin = createAsyncThunk(
     }
   },
 );
+
+export const getProfile = createAsyncThunk("app/getProfile", async () => {
+  try {
+    const response = await client.get(Endpoint.GET_PROFILE);
+    if (response?.status === HttpStatusCode.Ok) {
+      return response;
+    }
+
+    throw AN_ERROR_TRY_RELOAD_PAGE;
+  } catch (err) {
+    throw err;
+  }
+});

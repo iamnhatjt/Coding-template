@@ -3,8 +3,30 @@ import { store } from "../store/configureStore";
 import { I18nextProvider } from "react-i18next";
 import i18n from "../utils/i18n";
 import ThemeProvider from "./ThemeProvider";
+import { clientStorage } from "../utils/storage";
+import { ACCESS_TOKEN_STORAGE_KEY } from "../constant";
+import { SIGNIN_PATH, SIGNUP_PATH } from "../constant/paths";
+import { useEffect } from "react";
+import { toggleAppReady, updateAuth } from "../store/app/reducers";
+import { getProfile } from "../store/app/action";
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
+  useEffect(() => {
+    const accessToken = clientStorage.get(ACCESS_TOKEN_STORAGE_KEY);
+    store.dispatch(toggleAppReady(true));
+
+    if (
+      !accessToken &&
+      ![SIGNIN_PATH, SIGNUP_PATH].includes(window.location.pathname)
+    ) {
+      window.location.assign(SIGNIN_PATH);
+      return;
+    }
+
+    store.dispatch(updateAuth({ accessToken }));
+    store.dispatch(getProfile());
+  }, []);
+
   return (
     <Provider store={store}>
       <ThemeProvider>
