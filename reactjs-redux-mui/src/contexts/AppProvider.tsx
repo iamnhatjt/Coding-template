@@ -17,9 +17,11 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
     if (
       !accessToken &&
-      ![SIGNIN_PATH, SIGNUP_PATH].includes(window.location.pathname)
+      ![SIGNIN_PATH, SIGNUP_PATH].some((path) =>
+        window.location.pathname.includes(path),
+      )
     ) {
-      window.location.assign(SIGNIN_PATH);
+      window.location.pathname = SIGNIN_PATH;
       return;
     }
 

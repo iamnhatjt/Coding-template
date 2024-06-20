@@ -1,10 +1,15 @@
-import { Button, Input, Stack } from "@mui/material";
-import { memo } from "react";
+import { Button, Input, Stack, TextField } from "@mui/material";
+import { memo, useState } from "react";
 import * as Yup from "yup";
 import { EMAIL_REGEX } from "../../../constant/regex";
 import { useFormik } from "formik";
+import { Icon } from "@iconify/react";
+import Iconify from "../../../layouts/sharedComponents/Iconify";
+import { current } from "@reduxjs/toolkit";
 
 const Form = () => {
+  const [isShowPassword, setShowPassword] = useState(false);
+
   const onSubmit = async (value: any) => {
     console.log(value);
   };
@@ -15,6 +20,7 @@ const Form = () => {
     enableReinitialize: true,
     onSubmit,
   });
+
   return (
     <Stack
       flex={1}
@@ -27,27 +33,46 @@ const Form = () => {
       onSubmit={formik.handleSubmit}
       noValidate
     >
-      <Stack flex={1} overflow="auto" spacing={3}>
-        <Input
-          fullWidth
-          title="Email"
+      <Stack justifyContent="center" flex={1} overflow="auto" spacing={3}>
+        <TextField
+          id="email"
           name="email"
+          label="Email"
+          type="email"
+          placeholder="Email Adress"
+          value={formik.values.email}
           onChange={formik.handleChange}
-          value={formik.values?.email}
           onBlur={formik.handleBlur}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+          variant="outlined"
         />
 
-        <Input
-          type="password"
-          sx={{
-            mt: 3,
-            height: 58,
-          }}
-          fullWidth
+        <TextField
+          id="pas sword"
+          name="password"
+          label="Password"
+          type={isShowPassword ? "password" : "text"}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values?.password}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+          InputProps={{
+            endAdornment: (
+              <Iconify
+                icon={
+                  !isShowPassword
+                    ? "weui:eyes-off-filled"
+                    : "weui:eyes-on-outlined"
+                }
+                onClick={() => {
+                  setShowPassword((current) => !current);
+                }}
+              />
+            ),
+          }}
         />
+
         <Button
           variant="contained"
           type="submit"
@@ -57,7 +82,9 @@ const Form = () => {
           }}
           size="medium"
           color="primary"
-        ></Button>
+        >
+          Login
+        </Button>
       </Stack>
     </Stack>
   );

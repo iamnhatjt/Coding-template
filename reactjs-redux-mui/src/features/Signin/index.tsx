@@ -1,12 +1,14 @@
-import { Stack } from "@mui/material";
 import React, { memo } from "react";
 import Form from "./components/Form";
+import Wrapper from "../../layouts/sharedComponents/Wrapper";
+import Banner from "./components/Banner";
 
 const Signin: React.FC = () => {
   return (
-    <Stack>
+    <Wrapper>
       <Form />
-    </Stack>
+      <Banner />
+    </Wrapper>
   );
 };
 

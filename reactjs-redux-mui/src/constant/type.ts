@@ -18,3 +18,8 @@ export type MenuItemProps = {
   icon?: React.ReactNode;
   roles: string[];
 };
+
+export interface Size {
+  width?: number;
+  height?: number;
+}
