@@ -17,7 +17,6 @@ const Wrapper = (props: WrapperProps) => {
       direction="row"
       sx={{
         background: {
-          xs: "url('/images/img-auth-banner.webp') no-repeat center center",
           sm: "none",
         },
 
@@ -32,7 +31,7 @@ const Wrapper = (props: WrapperProps) => {
           (isSmallHeight ? 3 : 8) * 2,
         )})`,
       })}
-      bgcolor={{ sm: "common.white" }}
+      bgcolor="common.white"
       justifyContent={{ xs: "center", sm: "initial" }}
       alignItems={{ xs: "center", sm: "initial" }}
     >

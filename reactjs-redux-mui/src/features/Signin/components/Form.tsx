@@ -1,11 +1,10 @@
-import { Button, Input, Stack, TextField } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { memo, useState } from "react";
 import * as Yup from "yup";
 import { EMAIL_REGEX } from "../../../constant/regex";
 import { useFormik } from "formik";
-import { Icon } from "@iconify/react";
 import Iconify from "../../../layouts/sharedComponents/Iconify";
-import { current } from "@reduxjs/toolkit";
+import Input from "../../../layouts/sharedComponents/Input";
 
 const Form = () => {
   const [isShowPassword, setShowPassword] = useState(false);
@@ -34,7 +33,14 @@ const Form = () => {
       noValidate
     >
       <Stack justifyContent="center" flex={1} overflow="auto" spacing={3}>
-        <TextField
+        <Stack direction="column">
+          <Typography variant="h4">Welcome to My working 👋</Typography>
+          <Typography variant="subtitle1">
+            Please sign to your account and start the adventure{" "}
+          </Typography>
+        </Stack>
+        <Input
+          fullWidth
           id="email"
           name="email"
           label="Email"
@@ -45,10 +51,10 @@ const Form = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
-          variant="outlined"
         />
 
-        <TextField
+        <Input
+          fullWidth
           id="pas sword"
           name="password"
           label="Password"
@@ -108,7 +114,3 @@ export const validationSchema = Yup.object().shape({
     .min(6, "mat khau")
     .max(30, "some thing"),
 });
-
-const sxConfig = {
-  input: { height: 58 },
-};
