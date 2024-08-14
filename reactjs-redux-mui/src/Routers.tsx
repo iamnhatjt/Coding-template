@@ -3,7 +3,6 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
-import Testing from "./features/TestTing";
 import MainLayout from "./layouts/MainLayout";
 import Signin from "./features/Signin";
 const listRouterPaths: RouteObject[] = [
@@ -20,10 +19,6 @@ const listRouterPaths: RouteObject[] = [
       {
         path: "",
         element: <h1>Hello world</h1>,
-      },
-      {
-        path: "/testing",
-        element: <Testing />,
       },
     ],
   },
