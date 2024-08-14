@@ -8,6 +8,7 @@ import InputCustom from "../../../layouts/sharedComponents/InputCustom";
 import useBreakpoint from "../../../hooks/useBreakpoint";
 import {useAuth} from "../../../store/app/selectors";
 import {SigninData} from "../../../store/app/action";
+import useTranslate from "../../../hooks/useTranslate";
 
 const BG_Login = '/assets/images/backgrounds/bg-login.png'
 
@@ -15,18 +16,29 @@ const Form = () => {
     const [isShowPassword, setShowPassword] = useState(false);
     const {isMdSmaller} = useBreakpoint();
     const {onSignin} = useAuth();
-
-
+    const {tSignIn} = useTranslate();
     const onSubmit = async (value: SigninData) => {
         onSignin(value);
     };
+
+    const validationSchema = Yup.object().shape({
+        email: Yup.string()
+            .trim()
+            .required("Email is required")
+            .matches(EMAIL_REGEX, "Email in valid"),
+        password: Yup.string()
+            .trim()
+            .required("Password is required")
+            .min(6, "Password must be at least 6 characters")
+            .max(30, "Password must be at max 30 characters"),
+    })
 
     const formik = useFormik({
     initialValues: INITIAL_VALUES,
     validationSchema,
     enableReinitialize: true,
     onSubmit,
-  });
+    });
 
   return (
       <Box display="flex" justifyContent="center" height="100vh" alignItems="center"
@@ -52,10 +64,10 @@ const Form = () => {
               >
                   <Stack justifyContent="center" flex={1} overflow="auto" spacing={3}>
                       <Stack direction="column" alignItems="center" spacing={1}>
-                          <Typography variant="h4" fontWeight='600'>Login</Typography>
+                          <Typography variant="h4" fontWeight='600'>{tSignIn('title')}</Typography>
                           <Stack direction="row" spacing={1}>
-                              <Typography variant='subtitle1'>Haven't got account?</Typography>
-                              <Typography variant='subtitle1' color='primary.main'>Sign Up</Typography>
+                              <Typography variant='subtitle1'>{tSignIn('subtitle')}</Typography>
+                              <Typography variant='subtitle1' color='primary.main'>{tSignIn('signUp')}</Typography>
                           </Stack>
                       </Stack>
                       <InputCustom
@@ -101,9 +113,9 @@ const Form = () => {
                           direction='row' justifyContent='space-between' alignItems="center" mt={2}>
                           <Stack direction='row' alignItems="center" spacing={2}>
                               <Checkbox sx={{padding: 0}}/>
-                              <Typography variant='body1'>Remember password</Typography>
+                              <Typography variant='body1'>{tSignIn('remember')}</Typography>
                           </Stack>
-                          <Typography variant='body1' color='primary.main'>Forgot password</Typography>
+                          <Typography variant='body1' color='primary.main'>{tSignIn('forgot')}</Typography>
                       </Stack>
                       <Button
                           variant="contained"
@@ -115,14 +127,14 @@ const Form = () => {
                           size="large"
                           color="primary"
                       >
-                          <Typography variant="button">Login</Typography>
+                          <Typography variant="button">{tSignIn('button1')}</Typography>
                       </Button>
                       <Button variant='outlined' sx={{
                           display: 'flex',
                           justifyContent: 'center',
                           alignItems: 'center',
                       }}>
-                          <Typography variant="button">Login with Google</Typography>
+                          <Typography variant="button">{tSignIn('button2')}</Typography>
                           <Iconify icon='devicon:google' />
                       </Button>
 
@@ -141,15 +153,3 @@ const INITIAL_VALUES = {
   email: "",
   password: "",
 };
-
-export const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .trim()
-    .required("Email is required")
-    .matches(EMAIL_REGEX, "Email in valid"),
-  password: Yup.string()
-    .trim()
-    .required("mat khau requrie")
-    .min(6, "mat khau")
-    .max(30, "some thing"),
-});
