@@ -6,26 +6,26 @@ import {
   switchClasses,
   SelectChangeEvent,
 } from "@mui/material";
-import { useTranslation } from "react-i18next";
 import { LanguageEnum } from "../../../constant/type";
 import { clientStorage } from "../../../utils/storage";
 import { LANGUAGE_STORAGE_KEY } from "../../../constant";
 import { memo } from "react";
+import useTranslate from "../../../hooks/useTranslate";
 
 const SwitchLanguage = (props: StackProps) => {
-  const { t, i18n } = useTranslation();
+  const { tCommon, i18n } = useTranslate();
 
   const langData = [
     {
       img: "",
       alt: "USA Flag",
-      content: t("common.i18n.en"),
+      content: tCommon("common.i18n.en"),
       value: LanguageEnum.EN,
     },
     {
       img: "",
       alt: "Vietnamese Flag",
-      content: t("common.i18n.vi"),
+      content: tCommon("common.i18n.vi"),
       value: LanguageEnum.VI,
     },
   ];

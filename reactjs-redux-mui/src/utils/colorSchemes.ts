@@ -1,5 +1,8 @@
 import { ThemeMode } from "../constant/enums";
 
+const lightColor = '47, 43, 61'
+const darkColor = '208, 212, 241'
+
 const colorSchemes = {
   [ThemeMode.LIGHT]: {
     palette: {
@@ -8,7 +11,7 @@ const colorSchemes = {
         white: "#FFFFFF",
       },
       primary: {
-        main: "#3699FF", // OK
+        main: "#007BFF", // OK
         light: "#E1F0FF", // OK
         dark: "#187DE4", // OK
         contrastText: "#FFFFFF",
@@ -20,7 +23,7 @@ const colorSchemes = {
         contrastText: "#FFFFFF",
       },
       error: {
-        main: "#F64E60", // OK
+        main: "#EA5455", // OK
         light: "#FFE2E5", // OK
         dark: "#EE2D41", // OK
         contrastText: "#FFFFFF",
@@ -71,7 +74,7 @@ const colorSchemes = {
         A700: "#616161",
       },
       text: {
-        primary: "#212121", // OK
+        primary: `rgba(${lightColor}, 0.78)`, // OK
         secondary: "rgba(0, 0, 0, .06)",
         disabled: "rgba(0, 0, 0, .38)",
       },
@@ -80,6 +83,9 @@ const colorSchemes = {
         paper: "#FFFFFF",
         default: "#F7F7FD",
       },
+      customColor:{
+        main: darkColor
+      }
     },
   },
   [ThemeMode.DARK]: {
@@ -145,7 +151,7 @@ const colorSchemes = {
         A700: "#616161",
       },
       text: {
-        primary: "#FFFFFF", // OK
+        primary: `rgba(${darkColor}, 0.78)`, // OK
         secondary: "rgba(255, 255, 255, .7)",
         disabled: "rgba(255, 255, 255, .5)",
       },
@@ -153,7 +159,11 @@ const colorSchemes = {
         paper: "#313130",
         default: "#3B3A39",
       },
+      customColor:{
+        main: darkColor
+      }
     },
+
   },
 };
 
