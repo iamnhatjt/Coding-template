@@ -16,7 +16,7 @@ const dataSourceOption: DataSourceOptions = {
   entities: ['dist/modules/**/*.entity{.ts,.js}'],
   migrations: ['dist/migrations/*{.ts,.js}'],
   subscribers: ['dist/modules/**/*.subscriber{.ts,.js}'],
-  synchronize: true, // This line for auomatically create database schema
+  synchronize: true,
 };
 
 export const DataBaseConfig = registerAs(
