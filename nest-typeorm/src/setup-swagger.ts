@@ -24,5 +24,5 @@ export function setupSwagger(
   SwaggerModule.setup('api', app, document);
 
   const logger = new Logger('SwaggerModule');
-  logger.log(`Documment runnign on .......`);
+  logger.log(`Document swagger website on /api`);
 }

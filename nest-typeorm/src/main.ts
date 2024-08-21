@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import { setupSwagger } from './setup-swagger';
 import { ConfigService } from '@nestjs/config';
 import { LoggingInterceptor } from './common/interceptors/loging.interceptor';
+import { envNumber } from './global/env';
+import { EnvKey } from './constants/system.contanst';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -14,6 +16,6 @@ async function bootstrap() {
   //Swagger setup
   setupSwagger(app, configService);
 
-  await app.listen(3000);
+  await app.listen(envNumber(EnvKey.APPPort, 3000));
 }
 bootstrap();

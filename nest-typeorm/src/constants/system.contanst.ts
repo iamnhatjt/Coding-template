@@ -13,6 +13,7 @@ export enum EnvKey {
   DBPassWord = 'DB_PASSWORD',
   DBDataBase = 'DB_DATABASE',
   DBLogging = 'DB_LOGGING',
+  APPPort = 'APP_PORT',
 }
 
 export enum Security {
