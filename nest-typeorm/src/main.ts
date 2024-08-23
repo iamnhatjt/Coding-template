@@ -5,6 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { LoggingInterceptor } from './common/interceptors/loging.interceptor';
 import { envNumber } from './global/env';
 import { EnvKey } from './constants/system.contanst';
+import 'reflect-metadata';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
