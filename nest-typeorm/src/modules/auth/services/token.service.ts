@@ -29,7 +29,7 @@ export class TokenService {
     const accessToken = new AccessTokenEntity();
     accessToken.value = jwtSign;
     accessToken.user = { id: uid } as UserEntity;
-    accessToken.expired_at = dayjs().add('12').toDate();
+    // accessToken.expired_at = dayjs().add('12').toDate();
 
     await accessToken.save();
   }
