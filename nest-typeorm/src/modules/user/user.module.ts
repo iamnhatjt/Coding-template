@@ -7,7 +7,7 @@ import { UserService } from './user.service';
 const providers = [UserService];
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserEntity]), AuthModule],
+  imports: [TypeOrmModule.forFeature([UserEntity])],
   providers: [...providers],
   exports: [TypeOrmModule, ...providers],
 })

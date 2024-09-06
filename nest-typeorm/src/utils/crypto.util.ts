@@ -1,4 +1,4 @@
-import CryptoJS from 'crypto-js';
+import * as CryptoJS from 'crypto-js';
 
 const key = CryptoJS.enc.Utf8.parse('buqiyuanabcdefe9bc');
 const iv = CryptoJS.enc.Utf8.parse('0123456789buqiyuan');
