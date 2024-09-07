@@ -3,6 +3,7 @@ import { Exclude } from 'class-transformer';
 import { AccessTokenEntity } from '../auth/entities/access-token.entity';
 import { CommonEntity } from '../../common/entity/common.entity';
 
+
 export class UserEntity extends CommonEntity {
   @Column({ unique: true })
   username: string;

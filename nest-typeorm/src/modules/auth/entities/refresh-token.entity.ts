@@ -5,7 +5,7 @@ import {
   Entity,
   OneToOne,
   PrimaryGeneratedColumn,
-  JoinColumn
+  JoinColumn,
 } from 'typeorm';
 import { AccessTokenEntity } from './access-token.entity';
 

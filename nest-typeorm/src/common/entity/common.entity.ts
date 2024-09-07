@@ -19,7 +19,7 @@ export abstract class CommonEntity extends BaseEntity {
   updateAt: Date;
 }
 
-export abstract class CompleleEntity extends CommonEntity {
+export abstract class CompleteEntity extends CommonEntity {
   @ApiHideProperty()
   @Exclude()
   @Column({ name: 'create_by', update: false, nullable: true })

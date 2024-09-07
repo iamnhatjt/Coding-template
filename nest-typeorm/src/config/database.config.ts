@@ -13,7 +13,7 @@ const dataSourceOption: DataSourceOptions = {
   username: env(EnvKey.DBUserName),
   password: env(EnvKey.DBPassWord),
   database: env(EnvKey.DBDataBase),
-  entities: [__dirname + 'modules/**/*.entity{.ts,.js}'],
+  entities: ['dist/modules/**/*.entity{.ts,.js}'],
   migrations: [__dirname + 'migrations/*{.ts,.js}'],
   subscribers: [__dirname + 'modules/**/*.subscriber{.ts,.js}'],
   synchronize: true,
