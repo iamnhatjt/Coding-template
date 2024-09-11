@@ -1,9 +1,9 @@
-import { Column, OneToMany, Relation } from 'typeorm';
+import { Column, Entity, OneToMany, Relation } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { AccessTokenEntity } from '../auth/entities/access-token.entity';
 import { CommonEntity } from '../../common/entity/common.entity';
 
-
+@Entity({ name: 'sys_user' })
 export class UserEntity extends CommonEntity {
   @Column({ unique: true })
   username: string;
@@ -33,7 +33,7 @@ export class UserEntity extends CommonEntity {
   @Column({ nullable: true })
   remark: string;
 
-  @Column({ type: 'tinyint', nullable: true, default: 1 })
+  @Column({ type: 'int', nullable: true, default: 1 })
   status: number;
 
   @OneToMany(() => AccessTokenEntity, (accessToken) => accessToken.user, {

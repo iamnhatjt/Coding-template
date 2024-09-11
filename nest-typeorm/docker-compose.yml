@@ -11,9 +11,22 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_DATABASE}
     ports:
-      - '${DB_PORT}:5432'
+      - '${DB_PORT}:54'
     networks:
       - postgres_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    env_file:
+      - .env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
 
 networks:
   postgres_network:

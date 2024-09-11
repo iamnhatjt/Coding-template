@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DBNavigator.Project.DDLFileAttachmentManager">
+    <mappings />
+    <preferences />
+  </component>
+  <component name="DBNavigator.Project.DataEditorManager">
+    <record-view-column-sorting-type value="BY_INDEX" />
+    <value-preview-text-wrapping value="true" />
+    <value-preview-pinned value="false" />
+  </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
@@ -11,8 +20,25 @@
       <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
+  <component name="DBNavigator.Project.DatabaseEditorStateManager">
+    <last-used-providers />
+  </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.DatabaseSessionManager">
+    <connection id="08f5aa79-5a38-42d9-9178-f42104ee98a6" />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <argument-values-cache />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -31,8 +57,8 @@
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
-          <host value="0.0.0.0" />
-          <port value="3306" />
+          <host value="0.0.0.0:5432" />
+          <port value="5432" />
           <database value="nestjs_typeorm_template" />
           <tns-folder value="" />
           <tns-profile value="" />
@@ -41,14 +67,14 @@
           <deprecated-pwd value="c3Vubnk=" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
-          <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
+          <active value="true" />
+          <proxy-host value="localhost:5432" />
+          <proxy-port value="5432" />
+          <proxy-user value="sunny" />
+          <deprecated-proxy-pwd value="c3Vubnk=" />
           <auth-type value="PASSWORD" />
           <key-file value="" />
           <key-passphrase value="" />
