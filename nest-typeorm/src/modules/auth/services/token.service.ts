@@ -32,5 +32,6 @@ export class TokenService {
     // accessToken.expired_at = dayjs().add('12').toDate();
 
     await accessToken.save();
+    return accessToken;
   }
 }
